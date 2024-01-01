@@ -1,14 +1,27 @@
 ==== TABLE ====
-tabla 1
+tabla1
+4
+ID
+nombre
+apellido
+ocupacion
+==== TABLE ====
+tabla2
+3
+ID
+nombre_producto
+precio
 ==== TABLE ====
 tabla1
-3
-(null)
-(null)
-(null)
-==== TABLE ====
-tab3
 3
 ID
 nombre
 apellido
+&==== TABLE ====
+tabla2
+4
+ID Producto
+Nombre producto
+Precio
+Costo unitario
+&

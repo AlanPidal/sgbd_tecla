@@ -5,11 +5,16 @@
 // Sistema gestor de bases de datos
 
 
-
 void debug(){
-	printf("Inicializando el asistente creador de tablas\n");
+	Tabla **espacio=generarEspacioTablas(2);
+	redimEspacioTablas(espacio,5);
+	espacio[0]=asistCreacionTablas();
+	espacio[1]=asistCreacionTablas();
+	printf("%d",getSizeEspacioTablas(espacio));
+	guardarEspacioTablas(espacio);
+	/*printf("Inicializando el asistente creador de tablas\n");
 	Tabla *nueva=asistCreacionTablas();
-	guardarTabla(nueva);
+	guardarTabla(nueva);*/
 }
 void main(){
 	debug();
