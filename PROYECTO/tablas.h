@@ -34,6 +34,25 @@ char *strdynread(){
 	return cad;
 }
 
+// Función para obtener el tamaño del espacio del conjunto de tablas
+int getSizeEspacioTablas(Tabla **conj){
+	int u;
+	for(u=0;conj[u];u++);
+	return u;
+}
+
+// Función para generar un espacio para todo el conjutno de tablas
+Tabla **generarEspacioTablas(int m){
+	Tabla **conj=(Tabla **)malloc(sizeof(Tabla *)*m);
+	return conj;
+}
+
+// Redimensionar/Cambiar tamaño de conjunto de tablas
+Tabla **redimEspacioTablas(Tabla **conj,int m){
+	conj=(Tabla **)realloc(conj,m+1);
+	return conj;
+}
+
 // Función para crear una nueva tabla
 Tabla *crearTabla(char *nombre,int nCampos,char **metadatos){
 	Tabla *tabla=(Tabla *)malloc(sizeof(Tabla));
@@ -48,6 +67,17 @@ Tabla *crearTabla(char *nombre,int nCampos,char **metadatos){
 	return tabla;
 }
 
+// Función para nombrar los campos de una tabla
+char **nombrarCampos(int nCampos){
+	int u=0;
+	char **metadatos=(char **)malloc(sizeof(char *)*nCampos);
+	for(u=0;u<nCampos;u++){
+		printf("Nombre del campo %d:\n",u+1);
+		metadatos[u]=strdynread();
+	}
+	return metadatos;
+}
+
 // Función asistente de creación de tablas en la GUI del usuario
 Tabla *asistCreacionTablas(){
 	int u,nCampos;
@@ -57,19 +87,11 @@ Tabla *asistCreacionTablas(){
 	fflush(stdin);
 	printf("Elija el número de campos en la nueva tabla: \n");
 	scanf("%d",&nCampos);
+	// 	getchar permite consumir un salto de línea que queda atorado en el buffer en la anterior ejecución de scanf
 	getchar();
-	metadatos=(char **)malloc(sizeof(char *)*nCampos);
-	for(u=0;u<nCampos;u++){
-		printf("Nombre del campo %d:\n",u+1);
-		metadatos[u]=strdynread();
-	}
+	metadatos=nombrarCampos(nCampos);
 	Tabla *newTabla=crearTabla(nombre,nCampos,metadatos);
 	return newTabla;
-}
-
-// Función para nombrar los campos de una tabla
-void nombrarCampos(Tabla *tabla, char **nombres){
-	
 }
 
 // Función asistente para nombrar campos en la GUI del usuario
