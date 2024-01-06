@@ -1,23 +1,11 @@
 ==== TABLE ====
 tabla1
-4
-ID
-nombre
-apellido
-ocupacion
-==== TABLE ====
-tabla2
-3
-ID
-nombre_producto
-precio
-==== TABLE ====
-tabla1
 3
 ID
 nombre
 apellido
-&==== TABLE ====
+&
+==== TABLE ====
 tabla2
 4
 ID Producto
